@@ -241,8 +241,9 @@ export const generateTestSuite = async (apiSpec, endpoint) => {
       throw new Error('Rate limit exceeded for Groq API. Please try again later.');
     }
 
-    // If JSON parsing failed, provide a helpful error message
-    if (error.message.includes('JSON parsing failed') || error.message.includes('No valid JSON')) {
+    // If JSON parsing failed, provide a helpful error message with retry suggestion
+    if (error.message.includes('JSON parsing failed') || error.message.includes('No valid JSON') || error.message.includes('Empty response')) {
+      logger.warn('LLM failed to generate valid JSON, suggesting retry to user');
       throw new Error('The AI generated an invalid response. This can happen occasionally. Please click "Generate Tests" again to retry.');
     }
 

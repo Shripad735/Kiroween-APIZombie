@@ -25,6 +25,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust proxy for Vercel (required for rate limiting and IP detection)
+if (process.env.VERCEL === '1' || process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
+
 // Initiate MongoDB connection immediately (but don't block app startup)
 // The ensureDBConnection middleware will handle per-request connection checks
 connectDB()
