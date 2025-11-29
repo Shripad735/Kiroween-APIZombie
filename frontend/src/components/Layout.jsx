@@ -125,7 +125,7 @@ function Layout() {
         <footer className="bg-white border-t border-gray-200 mt-12">
           <div className="px-4 sm:px-8 py-4">
             <p className="text-center text-sm text-gray-500">
-              Built with ❤️ using React, Node.js, and Groq AI
+              Built with ❤️ using React, Node.js, and Groq AI by Shripad SK
             </p>
           </div>
         </footer>
