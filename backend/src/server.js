@@ -23,8 +23,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-connectDB();
+// Connect to MongoDB (async, non-blocking in serverless)
+connectDB().catch(err => {
+  console.error('Failed to connect to MongoDB:', err);
+});
 
 // Security Middleware
 // 1. Helmet - Security headers
@@ -148,39 +150,41 @@ app.use(notFoundHandler);
 // Global error handler (must be last)
 app.use(errorHandler);
 
-// Start server
-app.listen(PORT, () => {
-  logger.info('APIZombie Backend started', {
-    port: PORT,
-    environment: process.env.NODE_ENV,
-    nodeVersion: process.version,
+// Only start server if not in serverless environment (Vercel)
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    logger.info('APIZombie Backend started', {
+      port: PORT,
+      environment: process.env.NODE_ENV,
+      nodeVersion: process.version,
+    });
+    console.log(`🚀 APIZombie Backend running on port ${PORT}`);
+    console.log(`🌍 Environment: ${process.env.NODE_ENV}`);
+    console.log(`📡 Health check: http://localhost:${PORT}/health`);
   });
-  console.log(`🚀 APIZombie Backend running on port ${PORT}`);
-  console.log(`🌍 Environment: ${process.env.NODE_ENV}`);
-  console.log(`📡 Health check: http://localhost:${PORT}/health`);
-});
 
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (reason, promise) => {
-  logger.error('Unhandled Promise Rejection', {
-    reason: reason,
-    promise: promise,
+  // Handle unhandled promise rejections
+  process.on('unhandledRejection', (reason, promise) => {
+    logger.error('Unhandled Promise Rejection', {
+      reason: reason,
+      promise: promise,
+    });
+    // In production, you might want to exit the process
+    // process.exit(1);
   });
-  // In production, you might want to exit the process
-  // process.exit(1);
-});
 
-// Handle uncaught exceptions
-process.on('uncaughtException', (error) => {
-  logger.error('Uncaught Exception', {
-    error: {
-      name: error.name,
-      message: error.message,
-      stack: error.stack,
-    },
+  // Handle uncaught exceptions
+  process.on('uncaughtException', (error) => {
+    logger.error('Uncaught Exception', {
+      error: {
+        name: error.name,
+        message: error.message,
+        stack: error.stack,
+      },
+    });
+    // Exit the process as the application is in an undefined state
+    process.exit(1);
   });
-  // Exit the process as the application is in an undefined state
-  process.exit(1);
-});
+}
 
 export default app;

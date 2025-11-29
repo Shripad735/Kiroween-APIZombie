@@ -46,8 +46,8 @@ const logger = winston.createLogger({
   exitOnError: false,
 });
 
-// Add file transports in production
-if (process.env.NODE_ENV === 'production') {
+// Add file transports in production (but not in serverless environments like Vercel)
+if (process.env.NODE_ENV === 'production' && process.env.VERCEL !== '1') {
   const logsDir = path.join(__dirname, '../../logs');
   
   // Error log file
@@ -72,6 +72,8 @@ if (process.env.NODE_ENV === 'production') {
   );
   
   logger.info('File logging enabled for production environment');
+} else if (process.env.VERCEL === '1') {
+  logger.info('Running in Vercel serverless environment - console logging only');
 }
 
 // Handle uncaught exceptions
