@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import connectDB from './config/database.js';
 import { sanitizeInput } from './middleware/sanitization.middleware.js';
 import { generalLimiter, aiLimiter, uploadLimiter } from './middleware/rateLimiter.middleware.js';
@@ -26,6 +27,32 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB (async, non-blocking in serverless)
 connectDB().catch(err => {
   console.error('Failed to connect to MongoDB:', err);
+});
+
+// Public endpoints (before CORS and other middleware)
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'APIZombie Backend API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      api: '/api/*'
+    },
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({
+    success: true,
+    message: 'APIZombie Backend is running! 🧟',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV,
+    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+  });
 });
 
 // Security Middleware
@@ -106,16 +133,6 @@ app.use(sanitizeInput);
 
 // 7. General rate limiting for all API routes
 app.use('/api/', generalLimiter);
-
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({
-    success: true,
-    message: 'APIZombie Backend is running! 🧟',
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV,
-  });
-});
 
 // Import routes
 import specsRoutes from './routes/specs.routes.js';
