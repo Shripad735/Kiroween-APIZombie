@@ -1,341 +1,408 @@
 # 🧟 APIZombie
 
-**The Frankenstein API Testing Monster** - An AI-powered platform for testing and integrating APIs across multiple protocols.
+**The Frankenstein API Testing Monster** - An AI-powered platform that brings together REST, GraphQL, and gRPC APIs into one unified testing experience.
 
-## 🚀 Features
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://kiroween-api-zombie-1tj4.vercel.app/)
+[![Open Source](https://img.shields.io/badge/Open-Source-blue?style=for-the-badge)](https://github.com/Shripad735/Kiroween-APIZombie)
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-- **Natural Language to API**: Describe requests in plain English, get executable API calls
+---
+
+## 🎯 What is APIZombie?
+
+APIZombie is an AI-powered API testing platform that solves the complexity of working with multiple API protocols. Instead of juggling between different tools for REST, GraphQL, and gRPC, APIZombie brings everything together in one intuitive interface.
+
+### 🔥 Live Demo
+**Try it now:** [https://kiroween-api-zombie-1tj4.vercel.app/](https://kiroween-api-zombie-1tj4.vercel.app/)
+
+---
+
+## 💡 The Problem It Solves
+
+Modern applications use multiple API protocols, and developers face several challenges:
+
+### 1. **Tool Fragmentation**
+- Different tools for REST (Postman), GraphQL (GraphiQL), and gRPC (BloomRPC)
+- Context switching between multiple applications
+- Inconsistent interfaces and workflows
+
+### 2. **Manual Test Creation**
+- Writing test cases is time-consuming
+- Maintaining test suites across protocols is tedious
+- Ensuring comprehensive coverage requires significant effort
+
+### 3. **Protocol Translation**
+- Understanding how to convert between REST and GraphQL is complex
+- No easy way to see equivalent requests across protocols
+- Learning curve for each protocol
+
+### 4. **Complex Workflows**
+- Testing multi-step API flows requires custom scripting
+- Passing data between different protocol calls is challenging
+- No visual way to build and manage workflows
+
+### 5. **Natural Language Barrier**
+- Remembering exact API syntax and parameters
+- Writing requests from scratch every time
+- No intelligent assistance for API exploration
+
+---
+
+## ✨ How APIZombie Solves These Problems
+
+APIZombie provides a unified platform with AI-powered features that make API testing effortless:
+
+### 🤖 **Natural Language to API**
+Describe what you want in plain English, and AI generates the exact API request for you.
+
+**Example:** "Get all users from the API" → Generates complete REST/GraphQL/gRPC request
+
+### 🔄 **Multi-Protocol Support**
+Test REST, GraphQL, and gRPC APIs in one place without switching tools.
+
+### 🧪 **AI-Powered Test Generation**
+Automatically generate comprehensive test suites including success cases, error cases, edge cases, and security tests.
+
+### 🔀 **Protocol Translation**
+Convert API requests between REST, GraphQL, and gRPC with AI-powered explanations.
+
+### 🔗 **Visual Workflow Builder**
+Chain multiple API calls together across different protocols with drag-and-drop simplicity.
+
+### 📊 **Analytics & Insights**
+Track API performance, success rates, and usage patterns with interactive dashboards.
+
+### 🔐 **Secure Authentication**
+Manage API keys, Bearer tokens, OAuth, and other authentication methods with encrypted storage.
+
+---
+
+## 🖼️ Screenshots
+
+### Main Dashboard
+The central hub for accessing all features with quick start guidance.
+
+![Main Dashboard](screenshots/1.MainDashboard.png)
+
+---
+
+### API Specifications
+Upload and manage OpenAPI, GraphQL schemas, and gRPC proto files in one place.
+
+![API Specifications](screenshots/2.APISpecification.png)
+
+---
+
+### Natural Language Interface
+Describe API requests in plain English and let AI generate them for you.
+
+![Natural Language](screenshots/3.Natural%20Language.png)
+
+---
+
+### Workflow Builder
+Create complex multi-step API workflows with visual drag-and-drop interface.
+
+![Workflows](screenshots/4.Workflows.png)
+
+---
+
+### Protocol Translator
+Convert API requests between REST, GraphQL, and gRPC with AI explanations.
+
+![Protocol Translator](screenshots/5.protocolTranslator.png)
+
+![Protocol Translator Details](screenshots/5.protocolTranslator2.png)
+
+---
+
+### Saved Items
+Organize and manage your saved API requests and workflows.
+
+![Saved Items](screenshots/6.SavedIteam.png)
+
+---
+
+### Request History
+Track all your API requests with filtering and re-execution capabilities.
+
+![History](screenshots/7.History.png)
+
+---
+
+### Analytics Dashboard
+Visualize API performance metrics with interactive charts.
+
+![Analytics](screenshots/8.Analytics.png)
+
+---
+
+### Settings
+Configure authentication and manage application preferences.
+
+![Settings](screenshots/9.Settings.png)
+
+---
+
+### Test Generator
+Automatically generate comprehensive test suites for your APIs.
+
+![Test Generator](screenshots/10.Testgenerator.png)
+
+---
+
+## 🚀 Key Features
+
+### 🎯 **Core Capabilities**
+- **Natural Language Processing**: Convert plain English to API requests
 - **Multi-Protocol Support**: REST, GraphQL, and gRPC in one platform
-- **AI-Powered Test Generation**: Automatically create comprehensive test suites
+- **AI Test Generation**: Automatically create comprehensive test suites
 - **Protocol Translation**: Convert between different API formats
-- **Workflow Builder**: Chain multiple API calls together
-- **Analytics Dashboard**: Visualize API testing metrics with interactive charts showing success rates, response times, and most-used endpoints
-- **Authentication Management**: Configure and securely store API authentication (API Key, Bearer Token, Basic Auth, OAuth 2.0) with encrypted credential storage
-- **Global State Management**: Centralized application state with React Context for seamless data flow across components
-- **Responsive Design**: Fully responsive interface optimized for desktop, tablet, and mobile devices with touch-friendly interactions
-- **Enterprise-Grade Security**: Comprehensive security implementation with input sanitization, rate limiting, CORS protection, and secure credential encryption
+- **Workflow Automation**: Chain multiple API calls together
+- **Request History**: Track and re-execute previous requests
+
+### 📊 **Analytics & Monitoring**
+- Success rate tracking
+- Response time analysis
+- Most-used endpoints
+- Protocol usage breakdown
+- Interactive charts and visualizations
+
+### 🔐 **Security & Authentication**
+- API Key management
+- Bearer Token support
+- Basic Authentication
+- OAuth 2.0 integration
+- AES-256 encrypted credential storage
+- Secure session management
+
+### 💾 **Data Management**
+- Save and organize requests
+- Export/Import workflows
+- Search and filter capabilities
+- Tag-based organization
+- Shareable configurations
+
+### 🎨 **User Experience**
+- Responsive design (desktop, tablet, mobile)
+- Dark mode support
+- Intuitive navigation
+- Real-time feedback
+- Monaco code editor integration
+
+---
 
 ## 🛠️ Tech Stack
 
-**Frontend:**
-- React 18 + Vite
-- Tailwind CSS
-- React Router
-- React Query
-- Monaco Editor
+### Frontend
+- **React 18** - Modern UI framework
+- **Vite** - Lightning-fast build tool
+- **Tailwind CSS** - Utility-first styling
+- **React Router** - Client-side routing
+- **React Query** - Data fetching and caching
+- **Monaco Editor** - Code editing experience
+- **Recharts** - Interactive data visualization
+- **Lucide React** - Beautiful icons
 
-**Backend:**
-- Node.js + Express
-- MongoDB + Mongoose
-- Groq AI (LLM)
-- Axios
+### Backend
+- **Node.js + Express** - Server framework
+- **MongoDB + Mongoose** - Database and ODM
+- **Groq AI** - LLM for natural language processing
+- **Axios** - HTTP client
+- **Winston** - Logging
+- **Helmet** - Security headers
+- **Express Rate Limit** - API protection
+
+### Infrastructure
+- **Vercel** - Serverless deployment
+- **MongoDB Atlas** - Cloud database
+- **Groq API** - AI processing
+
+---
 
 ## 📦 Installation
 
 ### Prerequisites
 - Node.js 18+ installed
-- MongoDB Atlas account (or local MongoDB)
-- Groq API key (free at https://console.groq.com)
+- MongoDB Atlas account (free tier available)
+- Groq API key (free at [console.groq.com](https://console.groq.com))
 
-### Backend Setup
+### Quick Start
 
-1. Navigate to backend directory:
+1. **Clone the repository**
+```bash
+git clone https://github.com/Shripad735/Kiroween-APIZombie.git
+cd Kiroween-APIZombie
+```
+
+2. **Backend Setup**
 ```bash
 cd backend
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
 
-3. **Configure Groq API Key** (IMPORTANT):
-   - The current API key in `.env` is invalid/expired
-   - Get a new free API key from https://console.groq.com/keys
-   - Update `GROQ_API_KEY` in `backend/.env`
-   - See `backend/GROQ_API_SETUP.md` for detailed instructions
+# Configure environment variables
+cp .env.example .env
+# Edit .env and add your MONGODB_URI and GROQ_API_KEY
 
-4. Test the Groq API connection:
-```bash
-node test-groq-connection.js
-```
-
-5. Start the backend server:
-```bash
+# Start backend server
 npm start
 ```
 
-The backend will run on `http://localhost:5000`
-
-### Frontend Setup
-
-1. Open a new terminal and navigate to frontend directory:
+3. **Frontend Setup**
 ```bash
 cd frontend
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
 
-3. Start the development server:
-```bash
+# Start development server
 npm run dev
 ```
 
-The frontend will run on `http://localhost:3000`
-
-## 🎯 Quick Start
-
-1. **Start both servers** (backend and frontend)
-2. **Open your browser** to `http://localhost:3000`
-3. **Upload an API specification** (OpenAPI/Swagger file)
-4. **Describe what you want** in natural language
-5. **Execute and test** your APIs!
-
-## 📁 Project Structure
-
-```
-api-zombie/
-├── backend/
-│   ├── src/
-│   │   ├── config/         # Database and Groq configuration
-│   │   ├── models/         # Mongoose schemas (to be added)
-│   │   ├── routes/         # API routes (to be added)
-│   │   ├── controllers/    # Route controllers (to be added)
-│   │   ├── services/       # Business logic (to be added)
-│   │   └── server.js       # Express server
-│   ├── package.json
-│   └── .env
-├── frontend/
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── pages/          # Page components
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── package.json
-│   └── index.html
-└── .kiro/specs/api-zombie/ # Project specifications
-```
-
-## 🧪 Testing
-
-APIZombie includes comprehensive unit and integration tests for all core services:
-
-```bash
-# Run all tests with coverage
-cd backend
-npm test
-
-# Run specific test suites
-npm test nlEngine.test.js
-npm test protocolTranslator.test.js
-npm test responseValidator.test.js
-npm test testGenerator.test.js
-npm test workflowEngine.test.js
-
-# Run integration tests
-npm test api.integration.test.js
-
-# Frontend tests (to be added)
-cd frontend
-npm test
-```
-
-### Unit Test Coverage
-
-The backend includes unit tests for all critical services:
-- **NLEngine Service**: Tests for natural language parsing, Groq API integration, and caching
-- **Protocol Handlers**: Tests for REST, GraphQL, and gRPC request handling
-- **WorkflowEngine Service**: Tests for workflow execution, variable resolution, and error handling
-- **ProtocolTranslator Service**: Tests for REST↔GraphQL translation and explanation generation
-- **TestGenerator Service**: Tests for test suite generation and formatting
-- **ResponseValidator Service**: Tests for schema validation and mismatch detection
-
-All tests achieve >80% code coverage and validate core functionality, error handling, and edge cases.
-
-### Integration Test Coverage
-
-The backend includes comprehensive integration tests that validate end-to-end API functionality:
-- **API Specifications**: Tests for uploading, listing, retrieving, and deleting API specs (OpenAPI, GraphQL, gRPC)
-- **Natural Language Parsing**: Tests for converting natural language to executable API requests
-- **Request Execution**: Tests for executing API requests across different protocols
-- **Workflow Execution**: Tests for multi-step workflow execution with variable resolution
-- **Protocol Translation**: Tests for translating between REST, GraphQL, and gRPC formats
-- **Test Generation**: Tests for generating and running test suites
-- **Saved Items**: Tests for saving, retrieving, and managing API requests and workflows
-- **Request History**: Tests for logging, filtering, and retrieving request history
-
-Integration tests use a dedicated test server and validate complete request/response cycles, ensuring all components work together correctly.
-
-## 📚 API Documentation
-
-Once the backend is running, visit:
-- Health Check: `http://localhost:5000/health`
-- API endpoints will be documented as features are built
-
-## 🔐 Security Features
-
-APIZombie implements enterprise-grade security measures to protect your data and API credentials:
-
-- **Input Sanitization**: All user inputs are sanitized to prevent XSS and injection attacks
-- **Rate Limiting**: API endpoints are protected with configurable rate limits to prevent abuse
-- **CORS Protection**: Cross-Origin Resource Sharing configured with allowed origins
-- **Request Size Limits**: Protection against large payload attacks
-- **API Key Validation**: Middleware for validating API keys on protected endpoints
-- **Security Headers**: Helmet.js integration for comprehensive HTTP security headers
-- **Credential Encryption**: AES-256 encryption for stored authentication credentials
-- **Secure Storage**: Encrypted credential storage in MongoDB with proper key management
-
-### Security Best Practices
-
-- Never commit `.env` files to version control
-- Change the `JWT_SECRET` and `ENCRYPTION_KEY` in production
-- Use environment variables for all sensitive data
-- Regularly rotate API keys and encryption keys
-- Monitor rate limit logs for suspicious activity
-
-## 🚀 Deployment
-
-Ready to deploy APIZombie to production? We've got you covered:
-
-- **[Complete Deployment Guide](DEPLOYMENT.md)** - Detailed step-by-step instructions for deploying to Vercel
-- **[Quick Start Deployment](DEPLOYMENT_QUICKSTART.md)** - Deploy in ~45 minutes
-- **[Production Checklist](PRODUCTION_CHECKLIST.md)** - Comprehensive pre/post deployment checklist
-- **[Environment Variables Guide](ENVIRONMENT_VARIABLES.md)** - Complete reference for all configuration options
-
-### Deployment Overview
-
-APIZombie is production-ready and can be deployed to Vercel (recommended) with:
-- **Frontend**: Static hosting with optimized Vite build
-- **Backend**: Serverless functions with Node.js runtime
-- **Database**: MongoDB Atlas (free tier available)
-- **AI**: Groq API integration
-
-### Production Build Scripts
-
-Generate production secrets:
-```bash
-cd backend
-npm run generate-secrets
-```
-
-Build for production:
-```bash
-# Frontend build
-cd frontend
-npm run build
-
-# Backend is ready for serverless deployment
-cd backend
-# No build step needed - uses Node.js runtime directly
-```
-
-### Environment Configuration
-
-APIZombie includes comprehensive environment variable management:
-- **Development**: `.env` files for local development
-- **Production**: `.env.production` with production-optimized settings
-- **Example Files**: `.env.example` templates for easy setup
-- **Security**: Separate secrets for JWT, encryption, and API keys
-- **CORS**: Configurable allowed origins for production domains
-
-### Deployment Features
-
-- **Vercel Configuration**: Pre-configured `vercel.json` files for both frontend and backend
-- **MongoDB Atlas Ready**: Connection strings configured for cloud database
-- **Production Secrets**: Automated secret generation script for JWT and encryption keys
-- **CORS Protection**: Production-ready CORS configuration with environment-based origins
-- **Comprehensive Documentation**: Step-by-step deployment guides with troubleshooting tips
-
-## 🗺️ Development Roadmap
-
-Current implementation follows the spec in `.kiro/specs/api-zombie/`:
-
-✅ Task 1-28: Core Features, Security, Testing & Deployment Preparation (COMPLETED)
-⏳ Task 29: Deployment to Production (NEXT)
-⏳ Task 30: Final Testing and Polish
-
-### Recently Completed: Deployment Preparation
-
-APIZombie is now production-ready with comprehensive deployment infrastructure:
-- **Production Build Scripts**: Optimized build configurations for frontend (Vite) and backend deployment
-- **Environment Management**: Complete environment variable setup for development and production with example templates
-- **MongoDB Atlas Integration**: Cloud database configuration with connection string management
-- **Groq API Production Setup**: Production API key configuration and account setup guidance
-- **CORS Configuration**: Environment-based CORS settings for secure production domain access
-- **Deployment Documentation**: Comprehensive guides including step-by-step Vercel deployment, quick start guide, production checklist, troubleshooting tips, and environment variables reference
-- **Security Secrets**: Automated generation script for JWT secrets and encryption keys
-- **Vercel Configuration**: Pre-configured `vercel.json` files for seamless serverless deployment
-- **Benefits**: Streamlined deployment process, production-grade configuration, and comprehensive documentation ensure smooth transition from development to production
-
-### Recently Completed: Integration Testing
-
-APIZombie now includes comprehensive integration tests that validate end-to-end functionality:
-- **Full API Coverage**: Integration tests for all major endpoints including specs, natural language parsing, execution, workflows, translation, test generation, saved items, and history
-- **Real Request/Response Testing**: Tests validate complete request/response cycles with actual HTTP calls to a test server
-- **Cross-Component Validation**: Ensures all services, controllers, and middleware work together correctly
-- **Database Integration**: Tests verify proper data persistence and retrieval from MongoDB
-- **Error Scenario Testing**: Validates error handling across the entire request pipeline
-- **Benefits**: Increased confidence in system reliability, faster detection of integration issues, and validation that all components work together as expected
-
-### Previously Completed: Unit Testing
-
-APIZombie now includes comprehensive unit tests for all core services:
-- **Service Test Coverage**: Complete unit tests for NLEngine, ProtocolHandlers, WorkflowEngine, ProtocolTranslator, TestGenerator, and ResponseValidator services
-- **Jest Framework**: Modern testing framework with coverage reporting and mocking capabilities
-- **>80% Code Coverage**: Exceeds industry standards for test coverage across all critical services
-- **Edge Case Testing**: Tests validate error handling, boundary conditions, and edge cases
-- **Automated Testing**: Integrated into development workflow with `npm test` command
-- **Benefits**: Improved code reliability, easier refactoring, faster bug detection, and confidence in core functionality
-
-### Previously Completed: Error Handling and Logging
-
-APIZombie features robust error handling and comprehensive logging capabilities:
-- **Centralized Error Handler**: Unified error handling middleware for consistent error responses across all endpoints
-- **Structured Error Responses**: Standardized error format with status codes, messages, and detailed context
-- **Winston Logger**: Production-grade logging with multiple transports (console, file) and log levels
-- **Request/Response Logging**: Automatic logging of all API requests and responses for debugging and auditing
-- **User-Friendly Error Messages**: Clear, actionable error messages for common scenarios to improve developer experience
-- **Benefits**: Easier debugging, better monitoring, and improved reliability with comprehensive error tracking and structured logs
-
-### Previously Completed: Security Implementation
-
-APIZombie now includes comprehensive security features to protect your APIs and data:
-- **Input Sanitization Middleware**: Prevents XSS and injection attacks by sanitizing all user inputs
-- **Rate Limiting**: Express-rate-limit integration protects endpoints from abuse and DDoS attempts
-- **CORS Configuration**: Properly configured Cross-Origin Resource Sharing with allowed origins
-- **Request Size Limits**: Protection against oversized payload attacks
-- **API Key Validation**: Middleware for securing protected endpoints with API key authentication
-- **Security Headers**: Helmet.js adds essential HTTP security headers (CSP, HSTS, X-Frame-Options, etc.)
-- **Credential Encryption**: AES-256 encryption tested and verified for secure credential storage
-- **Benefits**: Enterprise-grade security ensures your API credentials and sensitive data are protected against common web vulnerabilities
-
-### Previously Completed: Responsive Design and Mobile Optimization
-
-The application is now fully responsive and optimized for all device sizes:
-- **Responsive Layouts**: All components adapt seamlessly to different screen sizes using Tailwind CSS breakpoints
-- **Mobile Navigation**: Hamburger menu for easy navigation on mobile devices
-- **Touch Optimization**: Enhanced touch interactions for mobile and tablet users
-- **Cross-Device Testing**: Verified functionality across phone, tablet, and desktop screen sizes
-- **Flexible Components**: API spec manager, workflow builder, test generator, and all other features work smoothly on any device
-- **Benefits**: Users can test and manage APIs from any device, improving accessibility and workflow flexibility
-
-## 🤝 Contributing
-
-This is a personal project, but suggestions and feedback are welcome!
-
-## 📄 License
-
-MIT License - feel free to use this project for learning and development.
-
-## 🙏 Acknowledgments
-
-- Groq for the amazing LLM API
-- MongoDB Atlas for database hosting
-- The open-source community
+4. **Access the application**
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:5000`
 
 ---
 
-Built with ❤️ by Shripad SK
+## 🎯 How to Use
+
+### 1. Upload API Specification
+- Go to **API Specifications** page
+- Upload your OpenAPI/Swagger file, GraphQL schema, or gRPC proto file
+- The system will parse and display all available endpoints
+
+### 2. Test with Natural Language
+- Navigate to **Natural Language** page
+- Describe what you want to test in plain English
+- Example: "Get all users with role admin"
+- AI generates the complete API request
+- Click **Execute** to run the request
+
+### 3. Build Workflows
+- Go to **Workflows** page
+- Click **Add Step** to add API calls
+- Configure data passing between steps
+- Execute the entire workflow with one click
+
+### 4. Generate Tests
+- Visit **Test Generator** page
+- Select an endpoint from your API spec
+- Click **Generate Tests**
+- AI creates comprehensive test suite
+- Export tests in Jest or Postman format
+
+### 5. Translate Protocols
+- Open **Protocol Translator** page
+- Paste your REST request
+- Select target protocol (GraphQL or gRPC)
+- Get translated request with explanation
+
+---
+
+## 🌟 Use Cases
+
+### For Developers
+- **Rapid API Exploration**: Quickly test new APIs without reading extensive documentation
+- **Protocol Learning**: Understand how different protocols work by seeing translations
+- **Workflow Testing**: Test complex multi-step user journeys
+- **Documentation**: Generate test cases that serve as API documentation
+
+### For QA Engineers
+- **Automated Testing**: Generate comprehensive test suites automatically
+- **Cross-Protocol Testing**: Test APIs across different protocols in one place
+- **Regression Testing**: Save and re-run test workflows
+- **Performance Monitoring**: Track API response times and success rates
+
+### For API Designers
+- **Protocol Comparison**: See how your API would look in different protocols
+- **Test Coverage**: Ensure all endpoints have proper test coverage
+- **Error Handling**: Test error scenarios automatically
+- **Security Testing**: Generate security-focused test cases
+
+---
+
+## 🔐 Security Features
+
+APIZombie implements enterprise-grade security:
+
+- **Input Sanitization**: Protection against XSS and injection attacks
+- **Rate Limiting**: Prevent API abuse and DDoS attempts
+- **CORS Protection**: Secure cross-origin resource sharing
+- **Credential Encryption**: AES-256 encryption for stored credentials
+- **Security Headers**: Comprehensive HTTP security headers via Helmet.js
+- **Request Size Limits**: Protection against large payload attacks
+
+---
+
+## 📚 Documentation
+
+- **[Deployment Guide](DEPLOYMENT.md)** - Deploy to production
+- **[Environment Variables](ENVIRONMENT_VARIABLES.md)** - Configuration reference
+- **[Troubleshooting](DEPLOYMENT_TROUBLESHOOTING.md)** - Common issues and solutions
+
+---
+
+## 🗺️ Roadmap
+
+### Current Status
+✅ Core features implemented and production-ready
+✅ Multi-protocol support (REST, GraphQL, gRPC)
+✅ AI-powered natural language processing
+✅ Workflow builder and automation
+✅ Test generation and execution
+✅ Analytics and monitoring
+✅ Deployed and live
+
+### Future Enhancements
+- [ ] Collaborative features (team workspaces)
+- [ ] API mocking capabilities
+- [ ] Performance testing tools
+- [ ] CI/CD integration
+- [ ] Custom plugin system
+- [ ] Advanced analytics and reporting
+- [ ] WebSocket support
+- [ ] API versioning management
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! This is an open-source project.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Groq** - For providing the amazing LLM API
+- **MongoDB Atlas** - For reliable cloud database hosting
+- **Vercel** - For seamless serverless deployment
+- **Open Source Community** - For the incredible tools and libraries
+
+---
+
+## 📞 Contact & Links
+
+- **Live Demo**: [https://kiroween-api-zombie-1tj4.vercel.app/](https://kiroween-api-zombie-1tj4.vercel.app/)
+- **GitHub**: [https://github.com/Shripad735/Kiroween-APIZombie](https://github.com/Shripad735/Kiroween-APIZombie)
+- **Author**: Shripad SK
+
+---
+
+<div align="center">
+
+**Built with ❤️ by Shripad SK**
+
+⭐ Star this repo if you find it useful!
+
+</div>
