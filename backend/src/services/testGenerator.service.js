@@ -93,11 +93,17 @@ Return a JSON array of test cases with this exact structure:
   }
 ]
 
-IMPORTANT:
-- Return ONLY the JSON array, no additional text
+IMPORTANT RULES:
+- Return ONLY the JSON array, no additional text before or after
+- Do NOT wrap the JSON in markdown code blocks
+- Do NOT include explanations or comments
 - Include at least 8 tests total (2 from each category)
 - Make tests realistic and practical
-- Include proper assertions for validation`;
+- Include proper assertions for validation
+- Ensure all JSON is valid (no trailing commas, proper quotes, escaped strings)
+
+Example of correct output format:
+[{"name":"Test 1","description":"...","request":{...},"expectedResponse":{...},"category":"success"}]`;
 
   return prompt;
 };
@@ -127,7 +133,7 @@ export const generateTestSuite = async (apiSpec, endpoint) => {
         },
       ],
       model: GROQ_CONFIG.model,
-      temperature: 0.7, // Slightly higher for more creative test cases
+      temperature: 0.3, // Lower temperature for more consistent JSON output
       max_completion_tokens: 8192, // More tokens for comprehensive test suites
       top_p: GROQ_CONFIG.top_p,
       stream: GROQ_CONFIG.stream,
@@ -136,18 +142,30 @@ export const generateTestSuite = async (apiSpec, endpoint) => {
 
     const responseText = completion.choices[0]?.message?.content;
 
-    if (!responseText) {
-      throw new Error('Empty response from Groq API');
+    if (!responseText || responseText.trim().length === 0) {
+      logger.error('Empty or invalid response from Groq API');
+      logger.error('Completion object:', JSON.stringify(completion, null, 2));
+      throw new Error('Empty response from Groq API. Please try again.');
     }
 
     logger.info('Raw LLM response length:', responseText.length);
+    logger.info('Response preview:', responseText.substring(0, 200));
 
-    // Extract JSON array from response
-    let jsonMatch = responseText.match(/\[[\s\S]*\]/);
+    // Try to extract JSON array from response (handle markdown code blocks)
+    let jsonString = responseText;
+    
+    // Remove markdown code blocks if present
+    jsonString = jsonString.replace(/```json\s*/g, '').replace(/```\s*/g, '');
+    
+    // Extract JSON array
+    let jsonMatch = jsonString.match(/\[[\s\S]*\]/);
     if (!jsonMatch) {
-      logger.error('No JSON array found in response:', responseText.substring(0, 500));
-      throw new Error('No valid JSON array found in LLM response');
+      logger.error('No JSON array found in response');
+      logger.error('Full response:', responseText);
+      throw new Error('No valid JSON array found in LLM response. The AI may have returned text instead of JSON. Please try again.');
     }
+    
+    jsonString = jsonMatch[0];
 
     let jsonString = jsonMatch[0];
     
@@ -223,6 +241,11 @@ export const generateTestSuite = async (apiSpec, endpoint) => {
 
     if (error.message.includes('rate limit')) {
       throw new Error('Rate limit exceeded for Groq API. Please try again later.');
+    }
+
+    // If JSON parsing failed, provide a helpful error message
+    if (error.message.includes('JSON parsing failed') || error.message.includes('No valid JSON')) {
+      throw new Error('The AI generated an invalid response. This can happen occasionally. Please click "Generate Tests" again to retry.');
     }
 
     throw new Error(`Failed to generate test suite: ${error.message}`);
