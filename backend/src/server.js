@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import connectDB from './config/database.js';
 import { sanitizeInput } from './middleware/sanitization.middleware.js';
 import { generalLimiter, aiLimiter, uploadLimiter } from './middleware/rateLimiter.middleware.js';
+import { ensureDBConnection } from './middleware/dbConnection.middleware.js';
 import { 
   errorHandler, 
   notFoundHandler 
@@ -24,10 +25,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB (async, non-blocking in serverless)
-connectDB().catch(err => {
-  console.error('Failed to connect to MongoDB:', err);
-});
+// Initiate MongoDB connection immediately (but don't block app startup)
+// The ensureDBConnection middleware will handle per-request connection checks
+connectDB()
+  .then(() => {
+    logger.info('Initial MongoDB connection established');
+  })
+  .catch(err => {
+    logger.error('Initial MongoDB connection failed, will retry on first request:', err.message);
+  });
 
 // Public endpoints (before CORS and other middleware)
 // Root endpoint
@@ -133,6 +139,9 @@ app.use(sanitizeInput);
 
 // 7. General rate limiting for all API routes
 app.use('/api/', generalLimiter);
+
+// 8. Ensure database connection for all API routes
+app.use('/api/', ensureDBConnection);
 
 // Import routes
 import specsRoutes from './routes/specs.routes.js';
