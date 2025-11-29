@@ -140,13 +140,48 @@ export const generateTestSuite = async (apiSpec, endpoint) => {
       throw new Error('Empty response from Groq API');
     }
 
+    logger.info('Raw LLM response length:', responseText.length);
+
     // Extract JSON array from response
     let jsonMatch = responseText.match(/\[[\s\S]*\]/);
     if (!jsonMatch) {
+      logger.error('No JSON array found in response:', responseText.substring(0, 500));
       throw new Error('No valid JSON array found in LLM response');
     }
 
-    const testCases = JSON.parse(jsonMatch[0]);
+    let jsonString = jsonMatch[0];
+    
+    // Clean up common JSON issues from LLM responses
+    // Remove trailing commas before closing brackets/braces
+    jsonString = jsonString.replace(/,(\s*[}\]])/g, '$1');
+    // Fix unescaped newlines in strings
+    jsonString = jsonString.replace(/([^\\])\n/g, '$1\\n');
+    
+    let testCases;
+    try {
+      testCases = JSON.parse(jsonString);
+    } catch (parseError) {
+      logger.error('JSON parse error:', parseError.message);
+      logger.error('Problematic JSON (first 1000 chars):', jsonString.substring(0, 1000));
+      
+      // Try to fix common issues and parse again
+      try {
+        // More aggressive cleanup
+        jsonString = jsonString
+          .replace(/,(\s*[}\]])/g, '$1') // Remove trailing commas
+          .replace(/([{,]\s*)(\w+):/g, '$1"$2":') // Quote unquoted keys
+          .replace(/:\s*'([^']*)'/g, ': "$1"') // Replace single quotes with double quotes
+          .replace(/\\'/g, "'") // Unescape single quotes
+          .replace(/\n/g, '\\n') // Escape newlines
+          .replace(/\r/g, '\\r') // Escape carriage returns
+          .replace(/\t/g, '\\t'); // Escape tabs
+        
+        testCases = JSON.parse(jsonString);
+        logger.info('Successfully parsed JSON after cleanup');
+      } catch (secondError) {
+        throw new Error(`JSON parsing failed: ${parseError.message}. Please try again.`);
+      }
+    }
 
     // Validate test cases structure
     if (!Array.isArray(testCases) || testCases.length === 0) {
