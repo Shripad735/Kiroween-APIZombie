@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Update README on Task Completion",
+  "description": "Monitors tasks.md for changes and automatically updates the README file to include newly completed features",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "tasks.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A task has been marked as completed in tasks.md. Please review the newly completed task and update the README.md file to include the new features that were implemented. Make sure to add the features in an appropriate section of the README with clear descriptions of what was added."
+  }
+}

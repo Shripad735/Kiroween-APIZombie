@@ -1,0 +1,59 @@
+{
+  "name": "api-zombie-backend",
+  "version": "1.0.0",
+  "description": "APIZombie Backend - AI-powered API testing platform",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "build": "echo 'Backend build complete - no compilation needed for Node.js'",
+    "prod": "NODE_ENV=production node src/server.js",
+    "test": "jest --coverage",
+    "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/integration --coverage=false --runInBand",
+    "test:db": "node test-scripts/test-connection.js",
+    "test:models": "node test-scripts/test-models.js",
+    "test:groq": "node test-scripts/test-groq-connection.js",
+    "test:nl": "node test-scripts/test-nl-api.js",
+    "test:specs": "node test-scripts/test-specs-api.js",
+    "verify:models": "node test-scripts/verify-design-compliance.js",
+    "vercel-build": "echo 'Backend ready for deployment'",
+    "generate-secrets": "node generate-secrets.js"
+  },
+  "keywords": [
+    "api",
+    "testing",
+    "ai",
+    "groq"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.0",
+    "@grpc/proto-loader": "^0.8.0",
+    "ajv": "^8.12.0",
+    "ajv-formats": "^3.0.1",
+    "axios": "^1.6.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.0",
+    "graphql": "^16.8.1",
+    "groq-sdk": "^0.3.0",
+    "helmet": "^7.1.0",
+    "js-yaml": "^4.1.1",
+    "jsonpath-plus": "^10.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0",
+    "protobufjs": "^7.2.5",
+    "swagger-parser": "^10.0.3",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}
