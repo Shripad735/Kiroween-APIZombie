@@ -166,8 +166,6 @@ export const generateTestSuite = async (apiSpec, endpoint) => {
     }
     
     jsonString = jsonMatch[0];
-
-    let jsonString = jsonMatch[0];
     
     // Clean up common JSON issues from LLM responses
     // Remove trailing commas before closing brackets/braces
